@@ -27,8 +27,8 @@ class MenuRepositoryImpl @Inject constructor(
             val domainMenus = MenuMapper.mapToDomainList(menuDtos)
             emit(domainMenus)
         } catch (e: Exception) {
-            // In a real app, you might want to emit an error state or handle exceptions differently
-            emit(emptyList())
+            // Let the ViewModel catch the error to display an appropriate error state
+            throw e
         }
     }.flowOn(Dispatchers.IO) // Perform on IO thread
 }
